@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ru" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Email</title>
+    <style type="text/css">
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+      }
+
+      img {
+        max-width: 100%;
+      }
+    </style>
+  </head>
+
+  <body style="margin: 0; padding: 0">
+    <table
+      align="center"
+      border="0"
+      cellpadding="0"
+      cellspacing="0"
+      style="border-collapse: collapse; background: url(https://i.ibb.co/zWcZvpF/fon.jpg) no-repeat top center"
+      width="600px"
+    >
+      <tr>
+        <td align="center">
+          <a href="https://hiaynderfyt.com/shop">
+            <img src="https://i.postimg.cc/0QBY353c/logog.png" alt="" />
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td><div style="border-top: 1px solid #fff; width: 510px; margin: 0 auto"></div></td>
+      </tr>
+      <tr>
+        <td>
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="520">
+            <tr>
+              <td width="100" height="60"></td>
+            </tr>
+            <tr>
+              <td>
+                <a
+                  href="https://hiaynderfyt.com/shop"
+                  target="_blank"
+                  style="color: #ffffff; font-size: 15px; font-weight: 600; text-transform: uppercase; text-decoration: none"
+                >
+                  МАГАЗИН</a
+                >
+              </td>
+
+              <td align="right">
+                <a
+                  href="https://www.instagram.com/hiaynderfyt/?hl=ru"
+                  target="_blank"
+                  style="color: #ffffff; font-size: 15px; font-weight: 600; text-transform: uppercase; text-decoration: none"
+                >
+                  Инстаграм</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td width="100" height="60"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <table
+      align="center"
+      border="0"
+      cellpadding="0"
+      cellspacing="0"
+      style="border-collapse: collapse; background-color: #000000"
+      width="600"
+      bgcolor="#000000"
+    >
+      <tr>
+        <td>
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="520">
+            <tr>
+              <td width="100" height="10"></td>
+            </tr>
+
+            <tr>
+              <td>
+                <span style="color: #807adc; font-size: 20px; font-weight: bold">Заказ оформлен</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="100" height="40"></td>
+      </tr>
+
+      <tr>
+        <td>
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="520">
+            <tr>
+              <td>
+                <span style="color: #ffffff; font-weight: bold; font-size: 20px">Здравствуйте, {{ order.firstName }} {{ order.patronymic }}!</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td width="100" height="40"></td>
+            </tr>
+
+            <tr>
+              <td>
+                <span style="color: #ffffff; font-size: 16px; line-height: 25px"
+                  >Благодарим за выбор hiaynderfyt! <br />Ваш заказ успешно оформлен и ожидает подтверждения!<br />
+                  Ниже представлена подробная информация о вашем заказе. <br /><br />
+
+                  Мы отправим Вам подтверждение заказа в ближайшее время.</span
+                >
+              </td>
+            </tr>
+
+            <tr>
+              <td width="100" height="40"></td>
+            </tr>
+
+            <tr>
+              <td>
+                <span style="color: #ffffff; font-weight: bold; font-size: 20px"
+                  >Заказ №{{ order.number }} / {{ order.createdAt|date('d.m.Y') }}</span
+                >
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="100" height="30"></td>
+      </tr>
+
+      <tr>
+        <td>
+          <table
+            align="center"
+            border="0"
+            cellpadding="0"
+            cellspacing="0"
+            style="border-collapse: collapse; border-top: 1px solid #ffffff"
+            width="510"
+          >
+            <tr>
+              <td width="100" height="20"></td>
+            </tr>
+            <tr>
+              <td width="100" align="center">
+                <span style="color: #ffffff; font-size: 14px">Товар</span>
+              </td>
+
+              <td width="100" align="right">
+                <span style="color: #ffffff; font-size: 14px">Количество</span>
+              </td>
+
+              <td width="60" align="right">
+                <span style="color: #ffffff; font-size: 14px">Цена</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="100" height="20"></td>
+      </tr>
+      {% for op in order.availableOrderProducts %}
+      <tr>
+        <td>
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="530">
+            <tr>
+              <td width="90">
+                <a href="{{ op.offer.product.url }}" target="_blank"> {{ preview_image_tag(op.offer.imageUrl, '64x64') }} </a>
+              </td>
+
+              <td width="255">
+                <a href="{{ op.offer.product.url }}" target="_blank" style="color: #ffffff; font-size: 16px; font-weight: bold; text-decoration: none"
+                  >{{ op }}</a
+                ><br /><br />
+                <a href="{{ op.offer.product.url }}" target="_blank" style="color: #ffffff; font-size: 10px">Детали</a>
+              </td>
+
+              <td>
+                <span style="color: #ffffff; font-size: 16px; font-weight: bold">{{ op.quantity }} шт</span>
+              </td>
+
+              <td align="right">
+                <span style="color: #ffffff; font-size: 16px; font-weight: bold">{{ op.summ }}</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="100" height="20"></td>
+      </tr>
+      {% endfor %}
+
+      <tr>
+        <td>
+          <table
+            align="center"
+            border="0"
+            cellpadding="0"
+            cellspacing="0"
+            style="border-collapse: collapse; border-top: 1px solid #ffffff"
+            width="510"
+          >
+            <tr>
+              <td width="100" height="30"></td>
+            </tr>
+
+            <tr>
+              <td align="right">
+                <span style="color: #ffffff; font-size: 14px">Сумма:</span>
+              </td>
+
+              <td align="right" width="35">
+                <span style="color: #ffffff; font-size: 14px; font-weight: bold">{{ order.summ|ru_currency }}</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td width="100" height="20"></td>
+            </tr>
+            {% if order.discountSumm > 0 %}
+            <tr>
+              <td align="right">
+                <span style="color: #ffffff; font-size: 14px">Скидка:</span>
+              </td>
+
+              <td align="right" width="35">
+                <span style="color: #ffffff; font-size: 14px; font-weight: bold">{{ order.discountSumm|ru_currency }}</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td width="100" height="20"></td>
+            </tr>
+            {% endif %} {% if order.deliveryCost %}
+            <tr>
+              <td align="right">
+                <span style="color: #ffffff; font-size: 14px">Доставка:</span>
+              </td>
+
+              <td align="right" width="35">
+                <span style="color: #ffffff; font-size: 14px; font-weight: bold">{{ order.deliveryCost|ru_currency }}</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td width="100" height="20"></td>
+            </tr>
+            {% endif %}
+            <tr>
+              <td align="right">
+                <span style="color: #ffffff; font-size: 14px">Итого:</span>
+              </td>
+
+              <td align="right" width="35">
+                <span style="color: #ffffff; font-size: 14px; font-weight: bold">{{ order.totalSumm|ru_currency }}</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="100" height="80"></td>
+      </tr>
+
+      <tr>
+        <td>
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="510">
+            <tr>
+              <td>
+                <span style="color: #ffffff; font-size: 18px; font-weight: bold">Информация о доставке</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td width="100" height="20"></td>
+      </tr>
+
+      <tr>
+        <td>
+          <table
+            align="center"
+            border="0"
+            cellpadding="0"
+            cellspacing="0"
+            style="border-collapse: collapse; border-top: 1px solid #ffffff"
+            width="510"
+          >
+            <tr>
+              <td width="100" height="30"></td>
+            </tr>
+
+            <tr>
+              <td width="130" valign="top">
+                <span style="color: #ffffff; font-size: 14px">Получатель:</span>
+              </td>
+
+              <td>
+                <span style="color: #ffffff; font-size: 14px; line-height: 23px"
+                  >{{ order.nickName }} <br />
+                  {{ order.phone }} <br />
+                  {{ order.email }}</span
+                >
+              </td>
+            </tr>
+
+            <tr>
+              <td width="100" height="30"></td>
+            </tr>
+
+            <tr>
+              <td width="130" valign="top">
+                <span style="color: #ffffff; font-size: 14px">Адрес доставки:</span>
+              </td>
+
+              <td>
+                <span style="color: #ffffff; font-size: 14px; line-height: 23px">
+                  {% if order.integrationDeliveryData.pickuppointAddress!=null %} {{ order.integrationDeliveryData.pickuppointAddress }} {% else %} {%
+                  if order.deliveryAddress.fullAddressString %}{{ order.deliveryAddress.fullAddressString }}{% endif%} {% endif %}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td width="100" height="30"></td>
+            </tr>
+
+            <tr>
+              <td width="130" valign="top">
+                <span style="color: #ffffff; font-size: 14px">Доставка:</span>
+              </td>
+
+              <td>
+                <span style="color: #ffffff; font-size: 14px; line-height: 23px"
+                  >{{ order.deliveryDate|date('d.m.Y') }}{{ order.deliveryTime !='' ? ' '~ order.deliveryTime }} {{ order.deliveryType.name }}</span
+                >
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td width="100" height="40"></td>
+      </tr>
+
+      <tr>
+        <td>
+          <table
+            align="center"
+            border="0"
+            cellpadding="0"
+            cellspacing="0"
+            style="border-collapse: collapse; background: url(https://i.postimg.cc/sxnqWLV0/IMG-1474.jpg) no-repeat; background-size: cover"
+            width="600"
+            height="280"
+          >
+            <tr>
+              <td width="100" height="48"></td>
+            </tr>
+            <tr>
+              <td align="left">
+                <span style="color: #ffffff; font-size: 24px; font-weight: bold; margin-left: 20px">Valentine's day</span>
+                <span style="color: #ff0000; font-size: 20px; margin-left: 20px; margin-top: 20px; display: block">Limited</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td width="100" height="30"></td>
+            </tr>
+
+            <tr>
+              <td align="left">
+                <a
+                  href="https://instagram.com/hiaynderfyt?r=nametag"
+                  target="_blank"
+                  style="
+                    color: #ffffff;
+                    border: 1px solid #ffffff;
+                    width: 140px;
+                    height: 25px;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    display: block;
+                    text-align: center;
+                    text-decoration: none;
+                    padding-top: 10px;
+                    margin-left: 20px;
+                  "
+                >
+                  Подробнее</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td width="100" height="45"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <table
+      align="center"
+      border="0"
+      cellpadding="0"
+      cellspacing="0"
+      style="border-collapse: collapse; background: url(https://i.ibb.co/CwZZCKM/fon3.png) no-repeat top center"
+      width="600"
+    >
+      <tr>
+        <td width="100" height="30"></td>
+      </tr>
+      <tr>
+        <td>
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="510">
+            <tr>
+              <td width="100" valign="top">
+                <a href="https://hiaynderfyt.com/shop" target="_blank">
+                  <img src="https://i.ibb.co/zrpQ586/logo2.png" alt="" />
+                </a>
+              </td>
+              <td valign="top">
+                <table align="right" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="370">
+                  <tr>
+                    <td style="border-bottom: 3px solid #000000">
+                      <span style="color: #000000; font-size: 14px; font-weight: bold">С любовью,<br /><br />Команда hiaynderfyt!</span><br /><br />
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td width="100" height="20"></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="100%">
+                        <tr>
+                          <td>
+                            <span style="color: #000000; font-size: 14px">По всем вопросам можно обращаться:</span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td width="100" height="10"></td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <span style="color: #000000; font-size: 14px"
+                              >e-mail:
+                              <a href="mailto:customerservice@hiaynderfyt.com" style="text-decoration: none; color: #000000; font-size: 14px"
+                                >customerservice@hiaynderfyt .com</a
+                              ></span
+                            >
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td width="100" height="10"></td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <span style="color: #000000; font-size: 14px"
+                              >телефон:
+                              <a href="tel:+7 (495) 151-06-05" style="color: #000000; font-size: 14px; text-decoration: none"
+                                >+7 (495) 151-06-05</a
+                              ></span
+                            >
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td width="100" height="30"></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <table align="left" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="250">
+                        <tr>
+                          <td>
+                            <a href="https://www.instagram.com/hiaynderfyt/?hl=ru" target="_blank">
+                              <img src="https://i.ibb.co/tcH1Fbg/icon.png" alt="" />
+                            </a>
+                          </td>
+
+                          <td>
+                            <a href="https://wa.me/message/XFCWV62VZCLUH1" target="_blank">
+                              <img src="https://i.ibb.co/SdzBqPB/icon2.png" alt="" />
+                            </a>
+                          </td>
+
+                          <td>
+                            <a href="https://www.youtube.com/channel/UCZIJ-0WTFpnnLUzr1DOQT8g" target="_blank">
+                              <img src="https://i.ibb.co/PhX67rd/icon3.png" alt="" />
+                            </a>
+                          </td>
+
+                          <td>
+                            <a href="https://t.me/HNDRFT_bot" target="_blank">
+                              <img src="https://i.ibb.co/PZFxt1t/icon4.png" alt="" />
+                            </a>
+                          </td>
+
+                          <td>
+                            <a href="https://www.tiktok.com/@hiaynderfyt?lang=ru-RU" target="_blank">
+                              <img src="https://i.ibb.co/wMxgJ6B/icon5.png" alt="" />
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td width="100" height="30"></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <unsubscribe style="display: block; padding-left: 50px; color: #000000; font-size: 12px">Отменить подписку</unsubscribe>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td width="100" height="30"></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
